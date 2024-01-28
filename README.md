@@ -33,3 +33,7 @@
    ```
    python sender.py
    ```
+
+## Note
+
+I have update the json file to be in an array _(assuming that was left out?)_
