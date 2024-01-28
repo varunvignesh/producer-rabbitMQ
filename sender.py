@@ -37,5 +37,5 @@ try:
         logging.info("Done.")
 
 except Exception as e:
-    logging.error(f"Error: {e}")
+    logging.error("Error: {}".format(e))
     sys.exit(1)
