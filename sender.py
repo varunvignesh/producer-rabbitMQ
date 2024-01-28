@@ -2,7 +2,11 @@ import pika
 import json
 import os
 import sys
+import logging
 from dotenv import load_dotenv
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 
 # Get the .env variables
 load_dotenv()
@@ -28,10 +32,10 @@ try:
         for json_data in data:
             # Publish a message in the queue
             channel.basic_publish(exchange='', routing_key=queue_name, body=json.dumps(json_data))
-            print(" [{}] Sent {}".format(queue_name, json_data))
+            logging.info(" [{}] Sent {}".format(queue_name, json_data))
 
-        print("Done.")
+        logging.info("Done.")
 
 except Exception as e:
-    print(f"Error: {e}")
+    logging.error(f"Error: {e}")
     sys.exit(1)
